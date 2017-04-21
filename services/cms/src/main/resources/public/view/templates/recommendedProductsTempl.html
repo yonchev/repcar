@@ -1,0 +1,22 @@
+<div>
+    <div id="recommendedProducts">
+        <h4 id="recommendedProductTitle">Recommended Products</h4>
+        <hr></hr>
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--6-col-tablet" ng-show="hasProducts"
+                ng-repeat="product in products">
+                <div id="meetingCard" class="demo-card-square mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand"
+                        style="background-image: url(images/{{product.productImage}})">
+                        <h2 class="mdl-card__title-text">{{product.productName}}</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">{{product.productType}}</div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a ui-sref="product({productId:product.productId})"
+                            class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"> View Product</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

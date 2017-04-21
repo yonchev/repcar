@@ -1,0 +1,32 @@
+
+<div id="activeUser">
+    <div class="center white-header">
+        <h3>{{activeUser.userData.userName}}</h3>
+    </div>
+    <div id="userProfileBox" class="mdl-grid white-background">
+        <div class="mdl-card mdl-cell--6-col imagePosition"
+             style="background-image: url(images/{{activeUser.userData.userImage}})"></div>
+        <div class="mdl-cell mdl-cell--6-col">
+            <div>
+                <span class="bold-text">Username: </span> <span>{{activeUser.userData.userName}}</span>
+            </div>
+            <div>
+                <span class="bold-text">First Name: </span> <span>{{activeUser.userData.userFirstName}}</span>
+            </div>
+            <div>
+                <span class="bold-text">Last Name: </span> <span>{{activeUser.userData.userLastName}}</span>
+            </div>
+            <div>
+                <span class="bold-text">Email: </span> <span>{{activeUser.userData.userEmail}}</span>
+            </div>
+            <div>
+                <span class="bold-text">WeakID: </span> <span>{{activeUser.userIdMap.weakId}}</span>
+            </div>
+            <div>
+                <span class="bold-text">MAC: </span> <span>{{activeUser.userIdMap.macAddress}}</span>
+            </div>
+        </div>
+    </div>
+    <recommended-products user="user" action="recommended"></recommended-products>
+    <div style="clear: both"></div>
+</div>

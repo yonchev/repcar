@@ -1,0 +1,149 @@
+server:
+  port: ${API_GATEWAY_SERVICE_PORT}
+
+logging:
+  config: classpath:logback-spring.groovy
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+
+eureka:
+  instance:
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URLS}
+    healthcheck:
+      enabled: true
+
+ribbon:
+  http:
+    client:
+      enabled: true
+  ConnectTimeout: 3000
+  ReadTimeout: 10000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+zuul:
+  semaphore:
+    max-semaphores: 1000
+  ignoredServices: '*'
+  prefix: /api/v1
+  routes:
+    product:
+      path: /products/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: product
+    company:
+      path: /companies/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: company
+    shop:
+      path: /shops/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: category
+    category:
+      path: /categories/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: category
+    user:
+      path: /users/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: user
+    idMap:
+      path: /idMaps/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: idmap
+    jabber-setting:
+      path: /jabberSettings/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: collaboration
+    jabber:
+      path: /jabber/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: collaboration
+    zone:
+      path: /zones/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: category
+    meeting:
+      path: /meetings/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: meeting
+    notification:
+      path: /notifications/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: notification
+    device:
+      path: /devices/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: category
+    content:
+      path: /contents/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: category
+    payment:
+      path: /payments/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: category
+    recommendationdetail:
+      path: /recommendationdetails/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: user-data
+    userdata:
+      path: /userdata/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: user-data
+    macs:
+      path: /macs/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: cmx
+    client:
+      path: /clients/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: category 
+    token:
+      path: /oauth/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: security
+    encrypt:
+      path: /encrypt/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: configuration
+    decrypt:
+      path: /decrypt/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      stripPrefix: false
+      serviceId: configuration

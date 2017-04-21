@@ -1,0 +1,54 @@
+server:
+  port: 9010
+  address: localhost
+
+logging:
+  config: classpath:logback-spring.groovy
+
+ribbon:
+  http:
+    client:
+      enabled: true
+
+eureka:
+  instance:
+    hostname: localhost
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+
+spring:
+  datasource:
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/repcar
+    username: root
+    password: admin
+    tomcat:
+      initialSize: 1
+      maxActive: 2
+      connectionProperties: logger=com.mysql.jdbc.log.Slf4JLogger
+  jpa:
+    database: MYSQL
+    hibernate:
+      use-new-id-generator-mappings: false
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+security:
+  oauth2:
+    client:
+      accessTokenUri: http://security/oauth/token
+      clientId: notification
+      clientSecret: '{cipher}bc6f105fe6daa4d9d02ad5cc48626e087b8632d401a69091e22c4dcdb7f735a1dbd56f504d14c7eead046719c7509aeb'
+      scope: read write
+    resource:
+      userInfoUri: http://security/user

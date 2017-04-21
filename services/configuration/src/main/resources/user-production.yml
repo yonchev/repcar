@@ -1,0 +1,37 @@
+server:
+  port: ${USER_SERVICE_PORT}
+
+logging:
+  config: classpath:logback-spring.groovy
+
+ribbon:
+  http:
+    client:
+      enabled: true
+
+eureka:
+  instance:
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URLS}
+    healthcheck:
+      enabled: true
+
+spring:
+  datasource:
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    tomcat:
+      connectionProperties: logger=com.mysql.jdbc.log.Slf4JLogger
+  jpa:
+    database: MYSQL
+    hibernate:
+      use-new-id-generator-mappings: false
+
+security:
+  oauth2:
+    resource:
+      userInfoUri: ${SECURITY_USERINFO_URL}

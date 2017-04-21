@@ -1,0 +1,49 @@
+server:
+  port: 8333
+  address: localhost
+
+logging:
+  config: classpath:logback-spring.groovy
+
+ribbon:
+  http:
+    client:
+      enabled: true
+
+eureka:
+  instance:
+    hostname: localhost
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+
+spring:
+  datasource:
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/weshop
+    username: root
+    password: admin
+    tomcat:
+      initialSize: 1
+      maxActive: 2
+      connectionProperties: logger=com.mysql.jdbc.log.Slf4JLogger
+  jpa:
+    database: MYSQL
+    hibernate:
+      use-new-id-generator-mappings: false
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://security/user

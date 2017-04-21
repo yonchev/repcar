@@ -1,0 +1,55 @@
+<div class="row grey-row">
+	<div class="white-header">
+		<h2 id="mainLabels">Products</h2>
+	</div>
+	<hr></hr>
+	  <div class="mdl-paging">
+         <label class="mdl-paging__per-page-label">Sort by:</label><label class="mdl-paging__per-page-value">Name</label>
+         <button id="HkhZcTBbWFADje7t23" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-paging__per-page-dropdown">
+			<i class="material-icons">arrow_drop_down</i>
+        </button>
+        <ul for="HkhZcTBbWFADje7t23" class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events">
+          <li tabindex="-1" class="mdl-menu__item mdl-js-ripple-effect" ng-click="sortBy('productName')">Name</li>
+          <li tabindex="-1" class="mdl-menu__item mdl-js-ripple-effect" ng-click="sortBy('productCategory')">Category</li>
+          <li tabindex="-1" class="mdl-menu__item mdl-js-ripple-effect" ng-click="sortBy('productType')">Type</li>
+          <li tabindex="-1" class="mdl-menu__item mdl-js-ripple-effect" ng-click="sortBy('productPrice')">Price</li>
+        </ul>
+	  <label class="mdl-paging__per-page-label">Results per page:</label><label class="mdl-paging__per-page-value">{{pageSize}}</label>
+        <button id="HkhZcTBbWFADje7t2" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-paging__per-page-dropdown">
+			<i class="material-icons">arrow_drop_down</i>
+        </button>
+        <ul for="HkhZcTBbWFADje7t2" class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events">
+          <li tabindex="-1" class="mdl-menu__item mdl-js-ripple-effect" ng-click="numbersPerPage(20)">20
+          </li>
+          <li tabindex="-1" class="mdl-menu__item mdl-js-ripple-effect" ng-click="numbersPerPage(40)">40
+          </li>
+        </ul>
+        <span class="mdl-paging__count">{{firstResult}}-{{lastResult}} of {{pageTotalElements}}</span>
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-paging__prev" ng-hide="currentPage == 0" ng-click="goToPreviousPage()">
+			<i class="material-icons">keyboard_arrow_left</i>
+        </button>
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-paging__next" ng-hide="totalPages == currentPage+1" ng-click="goToNextPage()">
+			<i class="material-icons">keyboard_arrow_right</i>
+        </button>
+      </div>
+	<div class="mdl-grid">
+		<div
+			class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--6-col-tablet"
+			ng-repeat="product in products">
+			<div id="meetingCard"
+				class="demo-card-square mdl-card mdl-shadow--2dp">
+				<div class="mdl-card__title mdl-card--expand imagePosition"
+					style="background-image: url(images/{{product.productImage}})">
+					<h2 class="mdl-card__title-text">{{product.productName}}</h2>
+				</div>
+				<div class="mdl-card__supporting-text">{{product.productType}}</div>
+				<div class="mdl-card__actions mdl-card--border">
+					<a ui-sref="product({productId:product.productId})"
+						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+						View Product</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="clear: both"></div>
+</div>

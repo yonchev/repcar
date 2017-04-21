@@ -1,0 +1,167 @@
+<div id="operatorConsoleContainer">
+
+    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+        <div class="white-header">
+		<h2 id="mainLabels">Operator Console</h2>
+	   </div>
+        <div class="mdl-tabs__tab-bar">
+            <a href="#listMeetings" class="mdl-tabs__tab is-active">List Meetings</a> <a href="#userProfiles"
+                class="mdl-tabs__tab">User Profiles</a> <a href="#jabberSettings" class="mdl-tabs__tab">Phone
+                Settings</a> <a href="#activeUsers" class="mdl-tabs__tab" id="activeUsersTab">Active Users</a>
+        </div>
+
+        <div class="mdl-tabs__panel is-active" id="listMeetings">
+             <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--6-col-tablet"
+                    ng-repeat="meeting in meetings">
+                        <div id="meetingCard" class="demo-card-square mdl-card mdl-shadow--2dp">
+                            <div class="mdl-card__title mdl-card--expand imagePosition"
+                                  style="background-image: url(images/meeting.png)">
+                             </div>
+                        <div class="mdl-card__title-text titlePosition">{{meeting.title}}</div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a ui-sref="meetingInfo({meetingInfoId:meeting.meetingInfoId})"
+                                class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"> More Info
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mdl-tabs__panel" id="userProfiles">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--6-col-tablet"
+                    ng-repeat="user in userProfiles">
+                        <div id="meetingCard" class="demo-card-square mdl-card mdl-shadow--2dp">
+                            <div class="mdl-card__title mdl-card--expand imagePosition"
+                                  style="background-image: url(images/{{user.userImage}})">
+                             </div>
+                             <div class="mdl-card__title-text titlePosition">{{user.userFirstName}} {{user.userLastName}}
+                             </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a ui-sref="userProfile({userId:user.userId})"
+                                class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"> More Info
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div id="jabberSettings" class="mdl-tabs__panel">
+            <div class="center white-background" id="phoneSettingsBox">
+                <div class="form-horizontal createuserForm center" novalidate="">
+                    <form class="center min-width-200 with-100per" action="#"">
+
+                        <div id="centerInputs"
+                            class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select"
+                            ng-class="{'is-dirty': selectedItem.text}">
+                            <input ng-model="selectedItem.text" class="mdl-textfield__input" type="text"
+                                id="ic-alertChoise" readonly tabIndex="-1"> <label for="ic-alertChoise"
+                                class="mdl-textfield__label">Operation mode:</label>
+                            <ul for="ic-alertChoise" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                                <li class="mdl-menu__item" ng-repeat=" mode in promptMode" ng-click="setValue(mode)"
+                                    ng-bind-html-unsafe="mode.text">{{ mode.text }}</li>
+                            </ul>
+                        </div>
+                        <div id="centerInputs" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                            ng-class="{'is-dirty': $root.jabberSettings.cucmUrl}">
+                            <input ng-model="$root.jabberSettings.cucmUrl" class="mdl-textfield__input" type="text"
+                                id="ic-cucm"> <label class="mdl-textfield__label" for="ic-cucm">CUCM
+                                URL:</label>
+                        </div>
+
+                        <div id="centerInputs" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                            ng-class="{'is-dirty': $root.jabberSettings.deviceName}">
+                            <input ng-model="$root.jabberSettings.deviceName" class="mdl-textfield__input" type="text"
+                                id="ic-deviceName"> <label class="mdl-textfield__label" for="ic-deviceName">Device
+                                Name(CSFNAME):</label>
+                        </div>
+
+                        <div id="centerInputs" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo"
+                            ng-class="{'is-dirty': $root.jabberSettings.jabberUsername}">
+                            <input ng-model="$root.jabberSettings.jabberUsername" class="mdl-textfield__input"
+                                type="text" id="ic-userNameJabber"> <label class="mdl-textfield__label"
+                                for="ic-userNameJabber">CUCM User Name:</label>
+                        </div>
+
+                        <div id="centerInputs" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                            ng-class="{'is-dirty': $root.jabberSettings.jabberPassword}">
+                            <input ng-model="$root.jabberSettings.jabberPassword" class="mdl-textfield__input"
+                                id="ic-passwordJabber" type="password"> <label class="mdl-textfield__label"
+                                for="ic-passwordJabber">CUCM Password:</label>
+                        </div>
+
+                        <div id="centerInputs" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                            ng-class="{'is-dirty': $root.jabberSettings.crmProfileUrl}">
+                            <input ng-model="$root.jabberSettings.crmProfileUrl" class="mdl-textfield__input"
+                                type="text" id="ic-redirectURL"> <label class="mdl-textfield__label"
+                                for="ic-redirectURL">CRM Profile URL:</label>
+                        </div>
+                    </form>
+
+                    <div class="form-group">
+                        <button id="centerInputs" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                            ng-click="saveSettings()">Save</button>
+                    </div>
+
+                </div>
+
+                <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+                    <div class="mdl-snackbar__text"></div>
+                    <button class="mdl-snackbar__action" type="button"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mdl-tabs__panel" id="activeUsers">
+
+            <h4 class="center">Registered active users:</h4>
+
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--6-col-tablet"
+                    ng-repeat="user in activeRegisteredUsers">
+                    <div id="activeUser" class="demo-card-square mdl-card mdl-shadow--2dp">
+                             <div class="mdl-card__title mdl-card--expand imagePosition"
+                                  style="background-image: url(images/{{user.userData.userImage}})">
+                             </div>
+                             <div class="mdl-card__title-text titlePosition">{{user.userData.userName}}
+                             </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a ui-sref="activeUser({userId:user.userData.userId})" ng-click="setActiveUser(user)"
+                                class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"> More Info
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="center">Unknown active users:</h4>
+
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--6-col-tablet"
+                    ng-repeat="user in activeUnregisteredUsers">
+                    <div id="activeUnregisteredUser" class="demo-card-square mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--expand imagePosition"
+                                  style="background-image: url(images/{{user.userData.userImage}})">
+                             </div>
+                             <div class="mdl-card__title-text titlePosition">MAC: {{user.userIdMap.macAddress}}
+                             </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a ui-sref="activeUser" ng-click="setActiveUser(user)"
+                               class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"> More Info
+                            </a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

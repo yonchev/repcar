@@ -1,0 +1,50 @@
+server:
+  port: ${USERDATA_SERVICE_PORT}
+
+logging:
+  config: classpath:logback-spring.groovy
+
+eureka:
+  instance:
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URLS}
+    healthcheck:
+      enabled: true
+
+ribbon:
+  http:
+    client:
+      enabled: true
+
+security:
+  oauth2:
+    resource:
+      userInfoUri: ${SECURITY_USERINFO_URL}
+
+feign:
+  hystrix:
+    enabled: false
+
+spring:
+  datasource:
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    tomcat:
+      initialSize: 50
+      maxActive: 150
+      connectionProperties: logger=com.mysql.jdbc.log.Slf4JLogger
+  jpa:
+    database: MYSQL
+    hibernate:
+      use-new-id-generator-mappings: false
+
+predictionio:
+  eventserver:
+    url: ${PREDICTIONIO_EVENTSERVER_URL}
+
+import:
+  cron: "0 * * * * *"

@@ -1,0 +1,53 @@
+<div>
+    <div class="center white-header">
+        <h3>Meeting Info Details</h3>
+    </div>
+    <div id="meetingInfoBox" class="mdl-grid white-background">
+        <div class="mdl-card mdl-cell--6-col imagePosition"
+             style="background-image: url(images/meeting.png)">
+         </div>
+        <div class="mdl-cell mdl-cell--6-col">
+            <div id="spanMeetingInfo">
+                <span class="bold-text">Title: </span> <span>{{meetingInfo.title}}</span>
+            </div>
+            <div id="spanMeetingInfo">
+                <span class="bold-text">Meeting user: </span> <span>{{meetingInfo.user.userFirstName}}
+                    {{meetingInfo.user.userLastName}}</span>
+            </div>
+            <div id="spanMeetingInfo">
+                <span class="bold-text">Meeting product: </span> <span>{{meetingInfo.product.productName}}</span>
+            </div>
+            <div id="spanMeetingInfo">
+                <span class="bold-text">Meeting notes: </span> <span>{{meetingInfo.notes}}</span>
+            </div>
+            <div id="spanMeetingInfo">
+                <span class="bold-text">Create date: </span> <span>{{meetingInfo.formattedCreateDate}}</span>
+            </div>
+        </div>
+    </div>
+    <hr></hr>
+     <div class="center white-header">
+    <h3>Meeting with user</h3>
+     </div>
+    <div id="meetingInfoBox" class="mdl-grid white-background">
+        <div class="mdl-card mdl-cell--6-col imagePosition"
+             style="background-image: url(images/{{meetingInfo.user.userImage}})">
+         </div>
+        <div class="mdl-cell mdl-cell--6-col">
+            <div id="spanMeetingInfo">
+                <span class="bold-text">Username: </span> <span>{{meetingInfo.user.userName}}</span>
+            </div>
+            <div id="spanMeetingInfo">
+                <span class="bold-text">First Name: </span> <span>{{meetingInfo.user.userFirstName}}</span>
+            </div>
+            <div id="spanMeetingInfo">
+                <span class="bold-text">Last Name: </span> <span>{{meetingInfo.user.userLastName}}</span>
+            </div>
+            <div id="spanMeetingInfo">
+                <span class="bold-text">Email: </span> <span>{{meetingInfo.user.userEmail}}</span>
+            </div>
+        </div>
+    </div>
+    <recommended-products user="user" action="recommended"></recommended-products>
+    <div style="clear: both"></div>
+</div>

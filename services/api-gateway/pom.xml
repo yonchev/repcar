@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.repcar.gateway</groupId>
+  <artifactId>api-gateway</artifactId>
+  <packaging>war</packaging>
+
+  <name>api-gateway</name>
+  <description>Api-gateway service for RepCar</description>
+  <url>http://localhost:9000</url>
+
+  <organization>
+    <name>RepCar AD</name>
+    <url>http://www.repcarpro.com/</url>
+  </organization>
+
+  <parent>
+    <groupId>com.repcar</groupId>
+    <artifactId>repcar</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../../</relativePath>
+  </parent>
+
+  <dependencies>
+    <dependency>
+         <groupId>org.springframework.cloud</groupId>
+         <artifactId>spring-cloud-netflix-sidecar</artifactId>
+    </dependency>
+
+  </dependencies>
+</project>

@@ -1,0 +1,40 @@
+server:
+  port: ${CONFIGURATION_SERVICE_PORT:8888}
+
+eureka:
+  instance:
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    healthcheck:
+      enabled: true
+
+logging:
+  config: classpath:logback-spring.groovy
+
+---
+spring:
+  profiles: dev
+
+server:
+  address: localhost
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+---
+spring:
+  profiles: production
+  cloud:
+    config:
+      server:
+        native:
+          searchLocations: file://${CONFIGURATION_FILES_LOCATION}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URLS}

@@ -1,0 +1,34 @@
+<div class="padding-30">
+    <div class="center white-header">
+        <h3>{{product.productName}}</h3>
+    </div>
+
+    <div id="productBox" class="mdl-grid white-background">
+        <div class="mdl-card mdl-cell--6-col imagePosition"
+            style="background-image: url(images/{{product.productImage}})"></div>
+        <div class="mdl-cell mdl-cell--6-col">
+            <div>
+                <span class="bold-text">Price: </span> <span>{{product.productPrice}}</span>
+            </div>
+
+            <div id="spanProduct">
+                <span class="bold-text">Product type: </span> <span>{{product.productType}}</span>
+            </div>
+
+            <div id="spanProduct">
+                <span class="bold-text">Description: </span> <span>{{product.productDescription}}</span>
+            </div>
+            <a id="spanProduct"
+                ng-if="user!=null && user.userRole=='ROLE_ADMIN' || user.userRole=='ROLE_OPERATOR' || user.userRole=='ROLE_USER'"
+                class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="{{jabberGuestLink}}"
+                target="_blank">Call for Support</a>
+            <div id="spanProduct" class="form-group">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                    ng-click="buyProduct(product.productId)">Buy Product</button>
+            </div>
+        </div>
+    </div>
+
+    <recommended-products user="user" action="recommended"></recommended-products>
+    <div style="clear: both"></div>
+</div>

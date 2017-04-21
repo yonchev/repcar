@@ -1,0 +1,45 @@
+server:
+  port: ${CMS_SERVICE_PORT}
+
+logging:
+  config: classpath:logback-spring.groovy
+
+eureka:
+  instance:
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URLS}
+    healthcheck:
+      enabled: true
+
+security:
+  oauth2:
+    client:
+      accessTokenUri: ${SECURITY_ACCESTOKEN_URL}
+      userAuthorizationUri: ${SECURITY_AUTHORIZATION_URL}
+      clientId: cms
+      clientSecret: '{cipher}5b868493e8637d7033dedf4899cfe8374946fe69a891d5b41f53ab670319cd7c'
+      grantType: password client_credentials refresh_token
+      scope: read write
+    resource:
+      userInfoUri: ${SECURITY_USERINFO_URL}
+
+zuul:
+  sensitiveHeaders: X-WESHOP
+  ignoredPatterns: /**/login/**,/**/home/**,/**/members/**
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+
+ribbon:
+  http:
+    client:
+      enabled: true
+  ConnectTimeout: 10000
+  ReadTimeout: 60000

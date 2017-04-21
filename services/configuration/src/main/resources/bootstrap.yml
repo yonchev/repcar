@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: configuration
+
+encrypt:
+  key: 7086D162E2037504AB568RT45454TT458

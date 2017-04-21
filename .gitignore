@@ -1,0 +1,17 @@
+bin/
+*.log
+.settings
+.project
+.classpath
+.factorypath
+.springBeans
+.idea/
+*.iml
+.tern-project
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/

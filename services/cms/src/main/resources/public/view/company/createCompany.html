@@ -1,0 +1,32 @@
+<div id="createCompanyForm" class="center white-background">
+    <div class="white-header center">
+        <h2 translate="Create New User">Create New Company</h2>
+    </div>
+
+    <div class="form-horizontal createuserForm center" novalidate="">
+        <form class="center min-width-200 with-100per" action="#">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" ng-model="createCompanyName"> <label
+                    class="mdl-textfield__label" for="sample4">Company Name</label>
+            </div>
+        </form>
+
+        <form class="center min-width-200 with-100per" action="#">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" ng-model="createCompanyAddress"> <label
+                    class="mdl-textfield__label" for="sample4">Company Address</label>
+            </div>
+        </form>
+
+        <div class="center" class="form-group">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="createCompany()">Create
+                Company</button>
+        </div>
+
+    </div>
+
+    <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+</div>

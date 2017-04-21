@@ -1,0 +1,50 @@
+server:
+  port: 8787
+
+logging:
+  config: classpath:logback-spring.groovy
+
+eureka:
+  instance:
+    hostname: localhost
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+    registerWithEureka: true
+    fetchRegistry: true
+
+security:
+  oauth2:
+    client:
+      accessTokenUri: http://security/oauth/token
+      userAuthorizationUri: http://security/oauth/authorize
+      clientId: cms
+      clientSecret: '{cipher}5b868493e8637d7033dedf4899cfe8374946fe69a891d5b41f53ab670319cd7c'
+      grantType: password client_credentials refresh_token
+      scope: read write
+    resource:
+      userInfoUri: http://security/user
+
+hystrix:
+  command   :
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+
+ribbon:
+  http:
+    client:
+      enabled: true
+  ConnectTimeout: 10000
+  ReadTimeout: 60000
+
+zuul:
+  sensitiveHeaders: X-WESHOP
+  ignoredPatterns: /**/login/**,/**/home/**,/**/members/**

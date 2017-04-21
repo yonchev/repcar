@@ -1,0 +1,87 @@
+<div id="createProductForm">
+    <div class="white-header center">
+        <h2 id="mainLabels" translate="Create New User">New Product</h2>
+    </div>
+    <div class="center white-background">
+        <div class="form-horizontal createuserForm center">
+            <form class="center with-70per" action="#" novalidate>
+                <div id="centerInputs" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                    ng-class="{'is-dirty': createProductName}">
+                    <input class="mdl-textfield__input" type="text" ng-model="createProductName"> <label
+                        class="mdl-textfield__label" for="sample4">Prodcut Name</label>
+                </div>
+            </form>
+
+            <form class="center with-70per" action="#">
+                <div id="centerInputs" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                    ng-class="{'is-dirty': createProductImage}">
+                    <input class="mdl-textfield__input" type="text" ng-model="createProductImage"> <label
+                        class="mdl-textfield__label" for="sample4">Product Image</label>
+                </div>
+            </form>
+
+            <form class="center with-70per" action="#">
+                <div id="centerInputs" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                    ng-class="{'is-dirty': createProductDescription}">
+                    <input class="mdl-textfield__input" type="text" ng-model="createProductDescription"> <label
+                        class="mdl-textfield__label" for="sample4">Product Description</label>
+                </div>
+            </form>
+
+            <form class="center with-70per" action="#">
+                <div id="centerInputs" class="mdl-select mdl-js-select mdl-select--floating-label">
+                    <label class="mdl-select__label" for="categoryChoise">Category name</label> <select
+                        ng-model="selectedCategory" class="mdl-select__input"
+                        data-ng-options="category as category.categoryName for category in categories"
+                        ng-change="setValue(selectedCategory)">
+                        <option value="">Select</option>
+                    </select>
+                </div>
+            </form>
+
+            <form class="center with-70per" action="#">
+                <div id="centerInputs" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                    ng-class="{'is-dirty': selectedCategoriesString}">
+                    <input class="mdl-textfield__input" type="text" id="categorySelected"
+                        ng-model="selectedCategoriesString"> <label class="mdl-textfield__label"
+                        for="categorySelected">Selected Categories</label>
+                </div>
+            </form>
+
+            <form class="center with-70per" action="#">
+                <div id="centerInputs" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                    ng-class="{'is-dirty': createProductPrice}">
+                    <input class="mdl-textfield__input" type="text" ng-model="createProductPrice"> <label
+                        class="mdl-textfield__label" for="sample4">Product Price</label>
+                </div>
+            </form>
+
+            <form class="center with-70per" action="#">
+                <div id="centerInputs" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                    ng-class="{'is-dirty': createProductRfid}">
+                    <input class="mdl-textfield__input" type="text" ng-model="createProductRfid"> <label
+                        class="mdl-textfield__label" for="sample4">Product RFID</label>
+                </div>
+            </form>
+
+            <form class="center with-70per" action="#">
+                <div id="centerInputs" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                    ng-class="{'is-dirty': createProductNfc}">
+                    <input class="mdl-textfield__input" type="text" ng-model="createProductNfc"> <label
+                        class="mdl-textfield__label" for="sample4">Product NFC</label>
+                </div>
+            </form>
+
+            <div class="center" class="form-group">
+                <button id="centerInputs" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                    ng-click="createProduct()">Create Product</button>
+            </div>
+
+        </div>
+
+        <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+        </div>
+    </div>
+</div>

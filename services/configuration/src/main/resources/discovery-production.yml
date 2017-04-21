@@ -1,0 +1,11 @@
+server:
+  port: ${DISCOVERY_SERVICE_PORT:8761}
+
+eureka:
+  instance:
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: ${EUREKA_URLS}
